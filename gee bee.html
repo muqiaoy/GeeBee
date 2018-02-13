@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000000;
+            zoom:70%;
+        }
+        button {
+            display: block;
+            margin:0 auto;
+            background-color: #ee432e;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee432e), color-stop(50%, #c63929), color-stop(50%, #b51700), color-stop(100%, #891100));
+            background-image: -webkit-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -moz-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -ms-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -o-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            border: 1px solid #951100;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+            box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+            color: #fff;
+            font: bold 20px/1 "helvetica neue", helvetica, arial, sans-serif;
+            padding: 12px 0 14px 0;
+            text-align: center;
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+            width: 150px; }
+            button:hover {
+                background-color: #f37873;
+                background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f37873), color-stop(50%, #db504d), color-stop(50%, #cb0500), color-stop(100%, #a20601));
+                background-image: -webkit-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+                background-image: -moz-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+                background-image: -ms-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+                background-image: -o-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+                background-image: linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+                cursor: pointer; }
+            button:active {
+                background-color: #d43c28;
+                background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d43c28), color-stop(50%, #ad3224), color-stop(50%, #9c1500), color-stop(100%, #700d00));
+                background-image: -webkit-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+                background-image: -moz-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+                background-image: -ms-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+                background-image: -o-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+                background-image: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+                -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
+                box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); 
+        }
+/*        button {
+          background-color: #eeeeee;
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
+          background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+          background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+          background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+          background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+          background-image: linear-gradient(top, #eeeeee, #cccccc);
+          border: 1px solid #ccc;
+          border-bottom: 1px solid #bbb;
+          border-radius: 3px;
+          color: #333;
+          font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+          padding: 8px 0;
+          text-align: center;
+          text-shadow: 0 1px 0 #eee;
+          width: 150px; }
+          buttonGrey:hover {
+            background-color: #dddddd;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+            background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+            background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+            background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+            background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+            background-image: linear-gradient(top, #dddddd, #bbbbbb);
+            border: 1px solid #bbb;
+            border-bottom: 1px solid #999;
+            cursor: pointer;
+            text-shadow: 0 1px 0 #ddd; }
+          buttonGrey:active {
+            border: 1px solid #aaa;
+            border-bottom: 1px solid #888;
+            -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+            box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; 
+        }*/
+    </style>
+    </head>
+    <body  onload="startMenu()" style="text-align:center">
+        <script>
+            var brick = new Array();
+            var ball,paddle,board1,board2,scoreBoard;
+            var wall = [[65,1165],[65,1015,'R'],[110,970,'R'],[110,870,'R'],[40,800,'R'],[40,545,'R'],[115,545,'B'],[115,720,'L'],[150,755,'L'],[150,505,'R'],[40,505,'T'],[40,150,'R'],[150,150,'B'],[150,40,'R'],[855,40,'B'],[855,150,'L'],[965,150,'B'],[965,505,'L'],[855,505,'T'],[855,755,'L'],[890,720,'R'],[890,545,'R'],[965,545,'B'],[965,800,'L'],[895,870,'L'],[895,970,'L'],[940,1015,'L'],[940,1165,'L']];
+            var eye1 = [[300,300],[350,300,'T'],[400,350,'R'],[400,400,'R'],[350,450,'R'],[300,450,'B'],[250,400,'L'],[250,350,'L'],[300,300,'L']];
+            var eye2 = [[670,300],[720,300,'T'],[770,350,'R'],[770,400,'R'],[720,450,'R'],[670,450,'B'],[620,400,'L'],[620,350,'L'],[670,300,'L']];
+            var nose = [[490,450],[510,450,'T'],[510,550,'R'],[490,550,'B'],[490,450,'L']];
+            var teeth1 =[[115,1130],[115,1075,'L'],[150,1040,'T'],[150,1130,'R']];
+            var teeth2 =[[890,1130],[890,1075,'R'],[855,1040,'T'],[855,1130,'L']];
+            var difficulty;
+
+            function startMenu(){
+                document.getElementById("menu").style.visibility = "visible";
+                // document.getElementById("BtnQuit").style.visibility = "hidden";
+            }
+            function startGame(d) {
+                myGameArea.start();
+                difficulty = d;
+                board1 = new obj(400+difficulty*25,1101,200-difficulty*50,20,"#ffffff","rect");
+                board2 = new obj(400+difficulty*25,651,200-difficulty*50,20,"#ffffff","rect");
+                ball = new obj(500,1080,20,20,"#bababa","ball");
+                
+                for (var i = 0;i<20;i++){
+                    var n = Math.floor(i/10);
+                    brick[i] = new obj(155+70*(i-10*n),45+35*n,65,30,"#c02eb4","rect");
+                }
+                for (var i = 20;i<30;i++){
+                    brick[i] = new obj(155+70*(i-20),115,65,30,"#ffb72b","rect");
+                }
+                for (var i = 30;i<45;i++){
+                    var n = Math.floor((i-30)/5);
+                    brick[i] = new obj(45+35*n,155+70*(i%5),30,65,"#5f6dfb","rect");
+                }
+                for (var i = 45;i<60;i++){
+                    var n = Math.floor((i-45)/5);
+                    brick[i] = new obj(860+35*n,155+70*(i%5),30,65,"#5f6dfb","rect");
+                }
+                for (var i = 60;i<70;i++){
+                    var n = i>64?1:0;
+                    brick[i] = new obj(45+850*n,550+35*(i%5),65,30,"#5f6dfb","rect");
+                }
+                scoreBoard = new obj(170,210,0,0,"#ffffff","text");
+            }
+
+        
+            var myGameArea = {
+                canvas : document.createElement("canvas"),
+                start: function() {
+                    this.canvas.width = 1005;
+                    this.canvas.height = 1200;
+                    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                    this.context = this.canvas.getContext("2d");
+                    this.drawBoard();
+                    this.interval1 = setInterval(updateGameArea, 20);
+                    this.interval2 = setInterval(refresh, 50000);
+                    window.addEventListener('keydown', function (e) {
+                        myGameArea.key = e.keyCode;
+                    })
+                    window.addEventListener('keyup', function (e) {
+                        myGameArea.key = false;
+                    })
+                },
+                drawBoard: function() {
+                    cxt = this.context;
+                    cxt.fillStyle = "#c02eb4";
+                    cxt.beginPath();
+                    cxt.moveTo(110,110);cxt.lineTo(110,0);cxt.lineTo(895,0);cxt.lineTo(895,110);cxt.lineTo(855,110);cxt.lineTo(855,40);cxt.lineTo(150,40);cxt.lineTo(150,110);cxt.closePath();cxt.fill();
+
+                    
+                    cxt.fillStyle = "#6924b4";
+                    cxt.beginPath();
+                    cxt.moveTo(150,110);cxt.lineTo(0,110);cxt.lineTo(0,800);cxt.lineTo(40,840);cxt.lineTo(40,150);cxt.lineTo(150,150);cxt.closePath();cxt.fill();
+                    cxt.moveTo(855,110);cxt.lineTo(1005,110);cxt.lineTo(1005,800);cxt.lineTo(965,840);cxt.lineTo(965,150);cxt.lineTo(855,150);cxt.closePath();cxt.fill();
+
+                    cxt.fillStyle = "#00fbfe";
+                    cxt.beginPath();
+                    cxt.moveTo(40,505);cxt.lineTo(150,505);cxt.lineTo(150,755);cxt.lineTo(115,720);cxt.lineTo(115,545);cxt.lineTo(40,545);cxt.closePath();cxt.fill();
+                    cxt.moveTo(965,505);cxt.lineTo(855,505);cxt.lineTo(855,755);cxt.lineTo(890,720);cxt.lineTo(890,545);cxt.lineTo(965,545);cxt.closePath();cxt.fill();
+                    cxt.moveTo(40,800);cxt.lineTo(110,870);cxt.lineTo(110,970);cxt.lineTo(65,1015);cxt.lineTo(30,1015);cxt.lineTo(75,970);cxt.lineTo(75,870);cxt.lineTo(40,835);cxt.closePath();cxt.fill();
+                    cxt.moveTo(965,800);cxt.lineTo(895,870);cxt.lineTo(895,970);cxt.lineTo(940,1015);cxt.lineTo(975,1015);cxt.lineTo(930,970);cxt.lineTo(930,870);cxt.lineTo(965,835);cxt.closePath();cxt.fill();
+
+                    cxt.fillStyle = "#ff72b6";
+                    cxt.beginPath();
+                    cxt.moveTo(30,1015);cxt.lineTo(65,1015);cxt.lineTo(65,1130);cxt.lineTo(30,1130);cxt.closePath();cxt.fill();
+                    cxt.moveTo(975,1015);cxt.lineTo(940,1015);cxt.lineTo(940,1130);cxt.lineTo(975,1130);cxt.closePath();cxt.fill();
+                    cxt.moveTo(150,1040);cxt.lineTo(150,1130);cxt.lineTo(115,1130);cxt.lineTo(115,1075);cxt.closePath();cxt.fill();
+                    cxt.moveTo(855,1040);cxt.lineTo(855,1130);cxt.lineTo(890,1130);cxt.lineTo(890,1075);cxt.closePath();cxt.fill();
+
+                    cxt.fillStyle = "#ffffff";
+                    cxt.beginPath();
+                    cxt.moveTo(300,300);cxt.lineTo(350,300);cxt.lineTo(400,350);cxt.lineTo(400,400);cxt.lineTo(350,450);cxt.lineTo(300,450);cxt.lineTo(250,400);cxt.lineTo(250,350);cxt.closePath();cxt.fill();
+                    cxt.moveTo(670,300);cxt.lineTo(720,300);cxt.lineTo(770,350);cxt.lineTo(770,400);cxt.lineTo(720,450);cxt.lineTo(670,450);cxt.lineTo(620,400);cxt.lineTo(620,350);cxt.closePath();cxt.fill();
+                    cxt.moveTo(490,450);cxt.lineTo(510,450);cxt.lineTo(510,550);cxt.lineTo(490,550);cxt.closePath();cxt.fill();
+
+                },
+                clear : function() {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                },
+                over : function() {
+                    alert("Game Over!");
+                    this.restart();
+                },
+                restart: function() {  
+                    ball.x = 500;
+                    ball.y = 1080;
+                    ball.speedx = 0;
+                    ball.speedy = 0;
+                    board1.x = 400+difficulty*25;
+                    board1.y = 1101;
+                    board2.x = 400+difficulty*25;
+                    board2.y = 651;
+                    myGameArea.key = 0;
+                    scoreBoard.score = 0;
+                    refresh();
+                    // setTimeout("myGameArea.over()",100000);
+                }
+            }
+            function obj(x,y,width,height,color,type){
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.radius = width;
+                this.color = color;
+                this.type = type;
+                this.speedx = 0;
+                this.speedy = 0;
+                this.score = 0;
+                this.highScore = 0;
+                this.status = 1;
+                this.update = function() {
+                    cxt = myGameArea.context;
+                    cxt.fillStyle = this.color;
+                    if(this.type=="rect")
+                        cxt.fillRect(this.x, this.y, this.width, this.height);
+                    else if (this.type=="ball"){
+                        cxt.beginPath();
+                        cxt.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+                        cxt.closePath();
+                        cxt.fill();
+                        this.x += this.speedx;
+                        this.y += this.speedy;
+                    }
+                    else if (this.type=="text"){
+                        cxt.font = "60px Arial";
+                        cxt.fillText("Score: " + this.score + "  High Score: " +this.highScore, this.x, this.y);
+                    }
+                }
+                this.crashWith = function(b) {
+                    var minT=10000,minB=10000,minL=10000,minR=10000;
+                    if(b.y<this.y-5) minT = minDist(b.x,b.y,this.x,this.y,this.x+this.width,this.y); //top
+                    else if(b.y>this.y+this.height+5) minB = minDist(b.x,b.y,this.x,this.y+this.height,this.x+this.width,this.y+this.height); //bottom
+                    if(b.x<this.x) minL = minDist(b.x,b.y,this.x,this.y,this.x,this.y+this.height); //left
+                    else if(b.x>this.x+this.width) minR = minDist(b.x,b.y,this.x+this.width,this.y,this.x+this.width,this.y+this.height); //right
+                    if(minT<=b.radius) return 'T';
+                    if(minB<=b.radius) return 'B';
+                    if(minL<=b.radius) return 'L';
+                    if(minR<=b.radius) return 'R';
+                    return 0;
+                }
+            }
+            function updateGameArea(){
+                myGameArea.clear();
+                myGameArea.drawBoard();
+                if(ball.y>1150) myGameArea.over();
+                var maxStartSpeedX = 7;
+                var minStartSpeedX = 3;
+                var maxStartSpeedY = 10;
+                var minStartSpeedY = 5;
+                if (myGameArea.key && myGameArea.key == 38 && ball.speedx==0 && ball.speedy==0) {
+                    ball.speedy = -1 * (Math.random()*(maxStartSpeedY-minStartSpeedY) + minStartSpeedY); 
+                    ball.speedx = ((Math.random()>0.5)?1:-1) * (Math.random()*(maxStartSpeedX-minStartSpeedX) + minStartSpeedX); 
+                    // ball.speedy = -3;
+                    // ball.speedx = -4;
+                }
+                if (myGameArea.key && myGameArea.key == 37) {
+                    if(board1.x>150) {
+                        board1.x += -7;board2.x += -7;
+                        if(ball.speedx==0 && ball.speedy==0) ball.x += -15;
+                    }
+                }
+                if (myGameArea.key && myGameArea.key == 39) {
+                    if(board1.x<750) {
+                        board1.x += 7;board2.x += 7;
+                        if(ball.speedx==0 && ball.speedy==0) ball.x += 15;
+                    }
+                }
+
+                var upperBoard = [[board2.x,board2.y],[board2.x+board2.width,board2.y,'T'],[board2.x+board2.width,board2.y+board2.height,'R'],[board2.x,board2.y+board2.height,'B'],[board2.x,board2.y,'L']];
+                var lowerBoard = [[board1.x,board1.y],[board1.x+board1.width,board1.y,'T'],[board1.x+board1.width,board1.y+board1.height,'R'],[board1.x,board1.y+board1.height,'B'],[board1.x,board1.y,'L']];
+                var collision = [wall, eye1, eye2, nose, teeth1, teeth2, upperBoard, lowerBoard];
+                for(var k=0;k<collision.length;k++){
+                    var obj=collision[k];
+                    for(var i=0;i<obj.length-1;i++){
+                        //only collision from one direction is legal
+                        var dirx=0, diry=0;
+                        if (obj[i+1][2]=='T') diry=1;
+                        if (obj[i+1][2]=='B') diry=-1;
+                        if (obj[i+1][2]=='L') dirx=1;
+                        if (obj[i+1][2]=='R') dirx=-1;
+                        if(minDist(ball.x,ball.y,obj[i][0],obj[i][1],obj[i+1][0],obj[i+1][1])<=ball.radius && diry*ball.speedy+dirx*ball.speedx>0){
+                            if(obj[i][0] == obj[i+1][0]) horiReb(ball);
+                            else if(obj[i][1] == obj[i+1][1]) verReb(ball);
+                            else if((obj[i+1][1]-obj[i][1]) / (obj[i+1][0]-obj[i][0]) > 0) posReb(ball);
+                            else negReb(ball);
+                        }
+                    }
+                }
+
+                for (var i =0;i<brick.length;i++){
+                    if(brick[i].status==1){
+                        if(brick[i].crashWith(ball)=='L'|| brick[i].crashWith(ball)=='R') {
+                            brick[i].status=0;
+                            scoreBoard.score += difficulty*Math.floor(Math.abs(ball.speedx)+Math.abs(ball.speedy));
+                            ball.speedx = -ball.speedx;
+                        }
+                        else if (brick[i].crashWith(ball)=='T'|| brick[i].crashWith(ball)=='B') {
+                            brick[i].status=0;
+                            scoreBoard.score += difficulty*Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*1.3);
+                            ball.speedy = -ball.speedy;
+                        }
+                        if(brick[i].status==1) brick[i].update();
+                    }
+                }
+                board1.update();
+                board2.update();
+                ball.update();
+                scoreBoard.update();
+                document.getElementById("menu").innerHTML="<button type=\"buttonGrey\" id=\"BtnQuit\" onclick=\"myGameArea.restart()\">QUIT</button>";
+                if(scoreBoard.score>=scoreBoard.highScore) scoreBoard.highScore = scoreBoard.score;
+            }
+            function refresh() {
+                for(var i=0;i<brick.length;i++) brick[i].status=1;
+            }
+            function minDist(px,py,startx,starty,endx,endy){
+                var m = 10000;
+                if(startx == endx) {
+                    if(starty>endy) {
+                        var temp = endy;
+                        endy = starty;
+                        starty = temp;
+                    }
+                    for(var i=starty;i<=endy;i++){
+                        var d = Math.sqrt(Math.pow(startx-px,2)+Math.pow(i-py,2));
+                        if(d<m) m = d;
+                    }
+                }
+                else if(starty == endy) {
+                    if(startx>endx) {
+                        var temp = endx;
+                        endx = startx;
+                        startx = temp;
+                    }
+                    for(var i=startx;i<=endx;i++){
+                        var d = Math.sqrt(Math.pow(i-px,2)+Math.pow(starty-py,2));
+                        if(d<m) m = d;
+                    }
+                }
+                else{
+                    if(startx>endx) {
+                        var temp = endx;
+                        endx = startx;
+                        startx = temp;
+                        temp = endy;
+                        endy = starty;
+                        starty = temp;
+                    }
+                    var k = (endy-starty)/(endx-startx);
+                    for(var i=startx;i<=endx;i++){
+                        var d = Math.sqrt(Math.pow(i-px,2)+Math.pow(starty+k*(i-startx)-py,2));
+                        if(d<m) m = d;
+                    }
+                }
+                return m;
+            }
+            function horiReb(b){
+                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*1.7);
+                b.speedx = -b.speedx + Math.random() - 0.5;
+            }
+            function verReb(b){
+                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*1.7);
+                b.speedy = -b.speedy + Math.random() - 0.5;
+            }
+            function posReb(b){
+                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*2);
+                var sign = (b.speedy>0)?1:-1;
+                var temp = b.speedy + sign*(Math.random() - 0.48);
+                b.speedy = b.speedx - sign*(Math.random() - 0.48);
+                b.speedx = temp;
+            }
+            function negReb(b){
+                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*2);
+                var sign = (b.speedy>0)?1:-1;
+                var temp = b.speedy + sign*(Math.random() + 0.48);
+                b.speedy = -b.speedx + sign*(Math.random() - 0.52);
+                b.speedx = -temp;
+            }
+        </script>
+    <div id="menu"><br><br>
+        <p style="font-size:50px; text-align:center">Choose Difficulty:</p>
+        <button type="buttonRed" id="BtnEasy" onclick="startGame(1)">EASY</button><br><br>
+        <button type="buttonRed" id="BtnMedium" onclick="startGame(2)">Medium</button><br><br>
+        <button type="buttonRed" id="BtnHard" onclick="startGame(3)">Hard</button><br><br>
+    </div>
+    <!-- <button id="BtnQuit" onclick="myGameArea.restart()">QUIT</button> -->
+    <p id="array0" style="font-size:30px"></p>
+    <p id="array1" style="font-size:30px"></p>
+    <p id="array2"></p>
+    <p id="array3"></p>
+    <p id="array4"></p>
+    <p id="array5"></p>
+    <p id="test"></p>
+    <p id="test2"></p>
+    </body>
+</html>
