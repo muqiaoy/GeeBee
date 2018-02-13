@@ -47,41 +47,6 @@
                 -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
                 box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); 
         }
-/*        button {
-          background-color: #eeeeee;
-          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-          background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
-          background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
-          background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
-          background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
-          background-image: linear-gradient(top, #eeeeee, #cccccc);
-          border: 1px solid #ccc;
-          border-bottom: 1px solid #bbb;
-          border-radius: 3px;
-          color: #333;
-          font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-          padding: 8px 0;
-          text-align: center;
-          text-shadow: 0 1px 0 #eee;
-          width: 150px; }
-          buttonGrey:hover {
-            background-color: #dddddd;
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
-            background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
-            background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
-            background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
-            background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
-            background-image: linear-gradient(top, #dddddd, #bbbbbb);
-            border: 1px solid #bbb;
-            border-bottom: 1px solid #999;
-            cursor: pointer;
-            text-shadow: 0 1px 0 #ddd; }
-          buttonGrey:active {
-            border: 1px solid #aaa;
-            border-bottom: 1px solid #888;
-            -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-            box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; 
-        }*/
     </style>
     </head>
     <body  onload="startMenu()" style="text-align:center">
@@ -199,7 +164,6 @@
                     myGameArea.key = 0;
                     scoreBoard.score = 0;
                     refresh();
-                    // setTimeout("myGameArea.over()",100000);
                 }
             }
             function obj(x,y,width,height,color,type){
@@ -257,8 +221,6 @@
                 if (myGameArea.key && myGameArea.key == 38 && ball.speedx==0 && ball.speedy==0) {
                     ball.speedy = -1 * (Math.random()*(maxStartSpeedY-minStartSpeedY) + minStartSpeedY); 
                     ball.speedx = ((Math.random()>0.5)?1:-1) * (Math.random()*(maxStartSpeedX-minStartSpeedX) + minStartSpeedX); 
-                    // ball.speedy = -3;
-                    // ball.speedx = -4;
                 }
                 if (myGameArea.key && myGameArea.key == 37) {
                     if(board1.x>150) {
@@ -361,22 +323,18 @@
                 return m;
             }
             function horiReb(b){
-                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*1.7);
                 b.speedx = -b.speedx + Math.random() - 0.5;
             }
             function verReb(b){
-                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*1.7);
                 b.speedy = -b.speedy + Math.random() - 0.5;
             }
             function posReb(b){
-                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*2);
                 var sign = (b.speedy>0)?1:-1;
                 var temp = b.speedy + sign*(Math.random() - 0.48);
                 b.speedy = b.speedx - sign*(Math.random() - 0.48);
                 b.speedx = temp;
             }
             function negReb(b){
-                // scoreBoard.score += Math.floor((Math.abs(ball.speedx)+Math.abs(ball.speedy))*2);
                 var sign = (b.speedy>0)?1:-1;
                 var temp = b.speedy + sign*(Math.random() + 0.48);
                 b.speedy = -b.speedx + sign*(Math.random() - 0.52);
@@ -389,7 +347,6 @@
         <button type="buttonRed" id="BtnMedium" onclick="startGame(2)">Medium</button><br><br>
         <button type="buttonRed" id="BtnHard" onclick="startGame(3)">Hard</button><br><br>
     </div>
-    <!-- <button id="BtnQuit" onclick="myGameArea.restart()">QUIT</button> -->
     <p id="array0" style="font-size:30px"></p>
     <p id="array1" style="font-size:30px"></p>
     <p id="array2"></p>
