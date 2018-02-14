@@ -223,15 +223,15 @@
                     ball.speedx = ((Math.random()>0.5)?1:-1) * (Math.random()*(maxStartSpeedX-minStartSpeedX) + minStartSpeedX); 
                 }
                 if (myGameArea.key && myGameArea.key == 37) {
-                    if(board1.x>150) {
-                        board1.x += -7;board2.x += -7;
-                        if(ball.speedx==0 && ball.speedy==0) ball.x += -15;
+                    if(board1.x>160) {
+                        board1.x += -10;board2.x += -10;
+                        if(ball.speedx==0 && ball.speedy==0) ball.x += -10;
                     }
                 }
                 if (myGameArea.key && myGameArea.key == 39) {
-                    if(board1.x<750) {
-                        board1.x += 7;board2.x += 7;
-                        if(ball.speedx==0 && ball.speedy==0) ball.x += 15;
+                    if(board1.x<650+50*difficulty) {
+                        board1.x += 10;board2.x += 10;
+                        if(ball.speedx==0 && ball.speedy==0) ball.x += 10;
                     }
                 }
 
